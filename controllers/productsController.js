@@ -65,4 +65,31 @@ module.exports = {
 
         return res.redirect('/')
     },
+
+    /* una imagen principal y varias secundarias */
+    addProductMainImage : (req,res) => {
+        return res.render('productAddMainImage')
+    },
+    storeProductMainImage : (req,res) => {
+
+        const products = readJSON('productsMainImage.json');
+
+        products.push({
+            id : uuidv4(),
+            name : req.body.name,
+            mainImage : req.files.mainImage[0].filename,
+            images : req.files.images.map(image => image.filename)
+        })
+     
+        writeJSON(products,'productsMainImage.json')
+
+        return res.redirect('/')
+    },
+    detailProductMainImage : (req,res) => {
+        const products = readJSON('productsMainImage.json');
+        const product = products.find(product => product.id === req.params.id)
+        return res.render('productDetailMainImage',{
+            ...product
+        })
+    },
 }
