@@ -22,9 +22,9 @@ router
   /* una imagen */
   .get("/addOneImage", addProductOneImage)
   .post("/addOneImage", uploadOneImage.single("image"), storeProductOneImage)
-  /*     .get('/editOneImage/:id',editProductOneImage)
+  .get('/editOneImage/:id',editProductOneImage)
     .put('/updateOneImage/:id',updateProductOneImage)
-    .delete('/deleteOneImage/:id',deleteProductOneImage) */
+    .delete('/deleteOneImage/:id',deleteProductOneImage)
 
   /* varias imágenes */
   .get("/detailMultipleImages/:id", detailProductMultipleImages)

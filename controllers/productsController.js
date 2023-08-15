@@ -28,12 +28,30 @@ module.exports = {
         })
     },
     editProductOneImage : (req,res) => {
-        return res.render('editProductOneImage', {
-            product
+
+        const products = readJSON('productsOneImage.json')
+        const product = products.find(product => product.id === req.params.id)
+        
+        return res.render('productEditOneImage', {
+            ...product
         })
     },
     updateProductOneImage : (req,res) => {
-        return res.send(req.body)
+
+        const products = readJSON('productsOneImage.json')
+        const productsModify = products.map(product => {
+            
+            if(product.id === req.params.id){
+
+                product.name = req.body.name;
+                product.image = req.file ? req.file.filename : product.image
+            }   
+            
+            
+            return product
+        })
+
+        return res.send(productsModify)
     },
     deleteProductOneImage : (req,res) => {
         return res.send('producto eliminado!!')
@@ -77,8 +95,8 @@ module.exports = {
         products.push({
             id : uuidv4(),
             name : req.body.name,
-            mainImage : req.files.mainImage[0].filename,
-            images : req.files.images.map(image => image.filename)
+            mainImage : req.files.mainImage ? req.files.mainImage[0].filename : null,
+            images : req.files.images ? req.files.images.map(image => image.filename) : []
         })
      
         writeJSON(products,'productsMainImage.json')

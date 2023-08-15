@@ -7,5 +7,11 @@
          "1692139951767_products_.webp",
          "1692139951800_products_.webp"
       ]
+   },
+   {
+      "id": "b6c77789-e19e-472b-99d4-5927541cee87",
+      "name": "Nuevo producto de prueba",
+      "mainImage": null,
+      "images": []
    }
 ]

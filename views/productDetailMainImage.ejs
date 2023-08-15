@@ -14,12 +14,12 @@
                            
                             <div class="col-12 col-md-3">
                                 <% images.forEach(image => { %>
-                                    <img width="100%" src="/images/<%= image %>" alt="">
+                                    <img width="100%" src="/images/<%= image  %>" alt="">
                                 <% }) %>
                                
                             </div>
                             <div class="col-12 col-md-9">
-                                <img class="img-fluid" src="/images/<%= mainImage %>" alt="">
+                                <img class="img-fluid" src="/images/<%= mainImage || 'default-placeholder.png' %>" alt="">
                                 <h1><%= name %></h1>
                             </div>
 
