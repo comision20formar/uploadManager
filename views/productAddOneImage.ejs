@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('partials/head') %>
+  <body>
+    <%- include('partials/header') %>
+    <div class="container mt-5">
+      <h1>Nuevo producto con UNA IMAGEN</h1>
+      <hr>
+        <div class="row">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nombre del producto</label>
+                                <input type="text" class="form-control" id="name" name="name">
+                              </div>
+                              <div class="mb-3">
+                                <label for="image" class="form-label">Agregar imagen</label>
+                                <input class="form-control" type="file" id="image" name="image">
+                              </div>
+                             
+                              <button type="submit" class="btn btn-dark">Guardar</button>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+  </body>
+</html>
