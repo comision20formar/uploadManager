@@ -1,5 +1,5 @@
 const express = require('express');
-const { list, addProductOneImage, storeProductOneImage, editProductOneImage, updateProductOneImage, deleteProductOneImage, addProductMultipleImages, storeProductMultipleImages } = require('../controllers/productsController');
+const { list, addProductOneImage, storeProductOneImage, editProductOneImage, updateProductOneImage, deleteProductOneImage, addProductMultipleImages, storeProductMultipleImages, detailProductMultipleImages } = require('../controllers/productsController');
 const { uploadOneImage } = require('../middlewares/upload');
 const router = express.Router();
 
@@ -14,6 +14,7 @@ router
     .delete('/deleteOneImage/:id',deleteProductOneImage)
 
     /* varias imágenes */
+    .get('/detailMultipleImages/:id',detailProductMultipleImages)
     .get('/addMultipleImages', addProductMultipleImages)
     .post('/addMultipleImages',uploadOneImage.array('images'), storeProductMultipleImages)
    /*  .get('/editMultipleImages/:id',editProductMultipleImages)

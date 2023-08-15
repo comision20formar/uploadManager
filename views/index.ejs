@@ -41,8 +41,9 @@
                       <%= name %>
                     </h5>
                     <div class="d-flex justify-content-end gap-2">
-                      <a href="/products/editOneImage/<%= id %>" class="btn btn-sm btn-success">Editar</a>
-                      <form action="/products/deleteOneImage/<%= id %>?_method=DELETE" method="POST">
+                      <a href="/products/detailMultipleImages/<%= id %>" class="btn btn-sm btn-primary">Ver más</a>
+                      <a href="/products/editMultipleImages/<%= id %>" class="btn btn-sm btn-success">Editar</a>
+                      <form action="/products/deleteMultipleImages/<%= id %>?_method=DELETE" method="POST">
                         <button class="btn btn-sm btn-danger">Eliminar</button>
                       </form>
                     </div>
