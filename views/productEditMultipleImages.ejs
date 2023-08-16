@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('partials/head') %>
+  <body>
+    <%- include('partials/header') %>
+    <div class="container mt-5">
+      <h1>EDITAR producto con VARIAS IMAGENES</h1>
+      <hr>
+        <div class="row">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/products/updateMultipleImages/<%= id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nombre del producto</label>
+                                <input type="text" class="form-control" id="name" name="name" value="<%= name %>">
+                              </div>
+                              <div class="mb-3">
+                                <% images.forEach(image => { %>
+                                  <img width="200" src="/images/<%= image %>" alt="">
+                              <% }) %>
+                            </div>
+                              <div class="mb-3">
+                                <label for="images" class="form-label">Cambiar imagenes</label>
+                                <input class="form-control" multiple type="file" id="images" name="images">
+                              </div>
+                             
+                              <button type="submit" class="btn btn-dark">Guardar</button>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+  </body>
+</html>

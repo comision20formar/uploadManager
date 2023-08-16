@@ -12,6 +12,9 @@ const {
   addProductMainImage,
   storeProductMainImage,
   detailProductMainImage,
+  editProductMultipleImages,
+  updateProductMultipleImages,
+  deleteProductMultipleImages,
 } = require("../controllers/productsController");
 const { uploadOneImage } = require("../middlewares/upload");
 const router = express.Router();
@@ -23,7 +26,7 @@ router
   .get("/addOneImage", addProductOneImage)
   .post("/addOneImage", uploadOneImage.single("image"), storeProductOneImage)
   .get('/editOneImage/:id',editProductOneImage)
-    .put('/updateOneImage/:id',updateProductOneImage)
+    .put('/updateOneImage/:id',uploadOneImage.single("image"),updateProductOneImage)
     .delete('/deleteOneImage/:id',deleteProductOneImage)
 
   /* varias imágenes */
@@ -34,9 +37,9 @@ router
     uploadOneImage.array("images"),
     storeProductMultipleImages
   )
-  /*  .get('/editMultipleImages/:id',editProductMultipleImages)
-    .put('/updateMultipleImages/:id',updateProductMultipleImages)
-    .delete('/deleteMultipleImages/:id',deleteProductMultipleImages) */
+  .get('/editMultipleImages/:id',editProductMultipleImages)
+    .put('/updateMultipleImages/:id',uploadOneImage.array("images"),updateProductMultipleImages)
+    .delete('/deleteMultipleImages/:id',deleteProductMultipleImages)
 
   /* una imagen principal y varias secundarias */
   .get("/detailMainImage/:id", detailProductMainImage)
